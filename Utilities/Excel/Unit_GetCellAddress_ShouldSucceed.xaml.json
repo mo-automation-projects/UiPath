@@ -1,0 +1,45 @@
+{
+  "DisplayName": "Happy path",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_ColumnIndex",
+      "DisplayName": "out_ColumnIndex",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "2",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_RowIndex",
+      "DisplayName": "out_RowIndex",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "3",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputString",
+      "DisplayName": "in_InputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "B3",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

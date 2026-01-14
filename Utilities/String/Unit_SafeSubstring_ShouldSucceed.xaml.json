@@ -1,0 +1,69 @@
+{
+  "DisplayName": "Unit_SafeSubstring_ShouldSucceed",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_InputString",
+      "DisplayName": "in_InputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "black metal ist krieg",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_StartIndex",
+      "DisplayName": "in_StartIndex",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "0",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_Length",
+      "DisplayName": "in_Length",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "11",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_ExceptionMessage",
+      "DisplayName": "out_ExceptionMessage",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_Substring",
+      "DisplayName": "out_Substring",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "black metal",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

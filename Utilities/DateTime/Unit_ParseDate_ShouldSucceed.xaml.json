@@ -1,0 +1,45 @@
+{
+  "DisplayName": "Happy path",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_OutDateTime",
+      "DisplayName": "out_OutDateTime",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "01/14/2026 00:00:00",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputString",
+      "DisplayName": "in_InputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "14.01.2026",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_Parsed",
+      "DisplayName": "out_Parsed",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "True",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

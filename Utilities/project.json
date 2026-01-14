@@ -5,7 +5,8 @@
   "main": "NewActivity.xaml",
   "dependencies": {
     "UiPath.System.Activities": "25.10.5",
-    "UiPath.Testing.Activities": "25.10.0"
+    "UiPath.Testing.Activities": "25.10.0",
+    "UiPath.UIAutomation.Activities": "25.10.22"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -39,7 +40,55 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "59d19588-7de2-4c39-a9d1-c7bb60aa3c72",
+        "dataVariationFilePath": ".variations\\Excel_Get cell address.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Excel\\Unit_GetCellAddress_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "42fefc47-2a60-4e11-8fd0-f309c772e950",
+        "dataVariationFilePath": ".variations\\DateTime_Parse date.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "DateTime\\Unit_ParseDate_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "443663f5-a482-4056-9786-2603e234b500",
+        "dataVariationFilePath": ".variations\\String_Remove special characters.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "String\\Unit_RemoveSpecialChars_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "b12b9a6f-50e9-4f7c-8ddb-20be87ddf66a",
+        "dataVariationFilePath": ".variations\\String_Safe substring.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "String\\Unit_SafeSubstring_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "f10043c4-ee17-45f6-8cba-c9be932866c2",
+        "dataVariationFilePath": ".variations\\System_Kill process.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "System\\Unit_KillProcess_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "5935665d-d79a-4443-a45a-de7120fa4ed6",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "DataTable\\Unit_GetDistinctRowsFromColumn_ShouldSucceed.xaml"
+      }
+    ],
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",

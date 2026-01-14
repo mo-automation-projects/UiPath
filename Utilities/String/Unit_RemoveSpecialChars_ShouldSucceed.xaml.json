@@ -1,0 +1,33 @@
+{
+  "DisplayName": "Unit_RemoveSpecialChars_ShouldSucceed",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_OutputString",
+      "DisplayName": "out_OutputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "TestString",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputString",
+      "DisplayName": "in_InputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Te$%s^tSt,_rin,)g",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

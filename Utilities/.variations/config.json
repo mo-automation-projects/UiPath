@@ -1,0 +1,24 @@
+{
+  "dataVariationFileInfo": [
+    {
+      "filePath": ".variations\\DateTime_Parse date.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\Excel_Get cell address.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\String_Remove special characters.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\String_Safe substring.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\System_Kill process.json",
+      "dataVariationType": "File"
+    }
+  ]
+}
