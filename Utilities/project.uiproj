@@ -1,0 +1,6 @@
+{
+  "Name": "Utilities",
+  "ProjectType": "Library",
+  "Description": "A library containing universal utility activities.",
+  "MainFile": "NewActivity.xaml"
+}

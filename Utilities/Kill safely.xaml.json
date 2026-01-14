@@ -1,0 +1,45 @@
+{
+  "DisplayName": "Kill safely",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_TimeOut",
+      "DisplayName": "in_TimeOut",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "100",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_ProcessName",
+      "DisplayName": "in_ProcessName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "NOTEPAD",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_ExceptionMessage",
+      "DisplayName": "out_ExceptionMessage",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
