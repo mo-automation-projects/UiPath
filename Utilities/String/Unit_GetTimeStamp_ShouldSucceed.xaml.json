@@ -1,0 +1,33 @@
+{
+  "DisplayName": "Unit_GetTimeStamp_ShouldSucceed",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_TimeStamp",
+      "DisplayName": "out_TimeStamp",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "15012026-1116",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_Format",
+      "DisplayName": "in_Format",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "ddMMyyyy-hhmm",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

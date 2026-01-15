@@ -87,6 +87,28 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "DataTable\\Unit_GetDistinctRowsFromColumn_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "8a82a231-9ae4-416b-bd27-b6bbe2ba316f",
+        "dataVariationFilePath": ".variations\\String_Trim whitespace.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "String\\Unit_TrimWhitespace_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "2480f1f5-224c-4e76-9630-80c99acc43d8",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "String\\Unit_NormalizeNewLine_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "04bc54ae-b327-443b-b97a-dc2122efc0ec",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "String\\Unit_GetTimeStamp_ShouldSucceed.xaml"
       }
     ],
     "saveToCloud": false
