@@ -23,6 +23,18 @@
     {
       "filePath": ".variations\\String_Trim whitespace.json",
       "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\String_Remove non-numeric characters.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\String_Is null or empty.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\String_Extract between strings.json",
+      "dataVariationType": "File"
     }
   ]
 }

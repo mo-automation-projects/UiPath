@@ -1,0 +1,57 @@
+{
+  "DisplayName": "Unit_ExtractBetweenStrings_ShouldSucceed",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_StringLimiters",
+      "DisplayName": "in_StringLimiters",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_OutputString",
+      "DisplayName": "out_OutputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputString",
+      "DisplayName": "in_InputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "UiPath Inc. is a global software company that develops artificial intelligence (AI) and agentic automation and orchestration software.",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_OperationResult",
+      "DisplayName": "out_OperationResult",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "artificial intelligence (AI)",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

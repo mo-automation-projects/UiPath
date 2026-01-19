@@ -1,0 +1,33 @@
+{
+  "DisplayName": "Unit_IsNullOrEmpty_ShouldSucceed",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_IsNullOrEmpty",
+      "DisplayName": "out_IsNullOrEmpty",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "True",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputString",
+      "DisplayName": "in_InputString",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
