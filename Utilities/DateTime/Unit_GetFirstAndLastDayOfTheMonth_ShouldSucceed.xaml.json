@@ -1,0 +1,45 @@
+{
+  "DisplayName": "Unit_GetFirstAndLastDayOfTheMonth_ShouldSucceed",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_FirstDayOfMonth",
+      "DisplayName": "out_FirstDayOfMonth",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "01/01/2026 00:00:00",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_LastDayOfMonth",
+      "DisplayName": "out_LastDayOfMonth",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "01/31/2026 00:00:00",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputDateTime",
+      "DisplayName": "in_InputDateTime",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "01/19/2026 00:00:00",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

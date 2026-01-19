@@ -133,6 +133,22 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "String\\Unit_ExtractBetweenStrings_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "f5ea8faf-004d-4ece-8566-13a27e08b9fe",
+        "dataVariationFilePath": ".variations\\DateTime_Get first and last day of the month.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "DateTime\\Unit_GetFirstAndLastDayOfTheMonth_ShouldSucceed.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "501a9f9c-18e6-4f6c-80ba-cf06567e3a11",
+        "dataVariationFilePath": ".variations\\DateTime_Add business days.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "DateTime\\Unit_AddBusinessDays_ShouldSucceed.xaml"
       }
     ],
     "saveToCloud": false

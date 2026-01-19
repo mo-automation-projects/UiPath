@@ -35,6 +35,14 @@
     {
       "filePath": ".variations\\String_Extract between strings.json",
       "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\DateTime_Get first and last day of the month.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\DateTime_Add business days.json",
+      "dataVariationType": "File"
     }
   ]
 }

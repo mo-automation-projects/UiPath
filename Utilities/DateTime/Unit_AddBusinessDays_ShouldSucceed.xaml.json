@@ -1,0 +1,45 @@
+{
+  "DisplayName": "Unit_AddBusinessDays",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_OutputDateTime",
+      "DisplayName": "out_OutputDateTime",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "01/27/2026 00:00:00",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputDateTime",
+      "DisplayName": "in_InputDateTime",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "01/17/2026 00:00:00",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_BusinessDaysCount",
+      "DisplayName": "in_BusinessDaysCount",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "7",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
