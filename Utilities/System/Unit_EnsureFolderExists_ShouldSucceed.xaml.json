@@ -1,0 +1,45 @@
+{
+  "DisplayName": "Unit_EnsureFolderExists_ShouldSucceed",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "out_FolderExists",
+      "DisplayName": "out_FolderExists",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "True",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_FolderPath",
+      "DisplayName": "in_FolderPath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "C:\\PerfLogs",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_FolderCreated",
+      "DisplayName": "out_FolderCreated",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "False",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
