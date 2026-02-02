@@ -1,0 +1,6 @@
+{
+  "Name": "London Stock Exchange Scraping REF",
+  "ProjectType": "Process",
+  "Description": "",
+  "MainFile": "Main.xaml"
+}

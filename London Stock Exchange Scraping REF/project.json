@@ -1,0 +1,103 @@
+{
+  "name": "London Stock Exchange Scraping REF",
+  "projectId": "07d500c4-6f95-4322-bdd0-1a8f784e5435",
+  "description": "",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[3.3.1]",
+    "UiPath.System.Activities": "[25.12.0-preview]",
+    "UiPath.Testing.Activities": "[25.10.0]",
+    "UiPath.UIAutomation.Activities": "[25.10.24]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "26.0.185.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "NewtonsoftJson",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "014b22e6-4900-4444-a73e-b7ddaa52bd83",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\GetTransactionDataTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "2aefb2e3-1f02-4ad9-8cf2-70375a05ba38",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "75b3cf8a-09b4-4a42-8f57-c2de3f69e1aa",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\InitAllSettingsTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "dfad3082-bf0d-4db5-9115-f60709e3fba8",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\MainTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "6d507600-0170-4652-ad36-07f688cecc40",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\ProcessTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "b13212fb-a2a3-451c-b0d5-673529490593",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      }
+    ],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "39d06a20-e873-4978-8717-a1cf0a00307d",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}
