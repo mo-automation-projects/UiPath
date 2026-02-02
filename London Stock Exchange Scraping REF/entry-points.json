@@ -15,6 +15,20 @@
           "in_OrchestratorQueueFolder": {
             "type": "string",
             "description": "Allows the Orchestrator folder name where the queue is created to be passed as an argument, instead of only being defined in the configuration file."
+          },
+          "in_DataGatheringMode": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647,
+            "description": "1 - use chrome and UI automation\n2 - use API calls to https://api.londonstockexchange.com\n\ndefault: 2"
+          },
+          "in_OutputPath": {
+            "type": "string",
+            "description": "Use this parameter to set the output file path. The default path is: \u0022Data\\Output\u0022"
+          },
+          "in_InputPath": {
+            "type": "string",
+            "description": "Use this parameter to set the input file path. The default path is: \u0022Data\\Input\\Input.csv\u0022"
           }
         },
         "required": []

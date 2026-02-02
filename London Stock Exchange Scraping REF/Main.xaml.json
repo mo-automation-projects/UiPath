@@ -28,6 +28,42 @@
       "IsPrincipal": true,
       "ArgumentType": 0,
       "DataSourceItems": null
+    },
+    {
+      "Name": "in_DataGatheringMode",
+      "DisplayName": "in_DataGatheringMode",
+      "Category": null,
+      "Tooltip": "1 - use chrome and UI automation\n2 - use API calls to https://api.londonstockexchange.com\n\ndefault: 2",
+      "Placeholder": "2",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_OutputPath",
+      "DisplayName": "in_OutputPath",
+      "Category": null,
+      "Tooltip": "Use this parameter to set the output file path. The default path is: \"Data\\Output\"",
+      "Placeholder": "Data\\Output",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_InputPath",
+      "DisplayName": "in_InputPath",
+      "Category": null,
+      "Tooltip": "Use this parameter to set the input file path. The default path is: \"Data\\Input\\Input.csv\"",
+      "Placeholder": "Data\\Input\\Input.csv",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
     }
   ]
 }
