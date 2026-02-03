@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Company, code or ISIN Filter",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "6Eq1LQx_-kepTeRtfTorMw",
+  "Reference": "VAJPJA5VLECWTzQFSTmzfQ/6Eq1LQx_-kepTeRtfTorMw",
+  "ParentRef": "VAJPJA5VLECWTzQFSTmzfQ/dXZrEwf5FUWyAw6jB6BqhA",
+  "Created": "2026-02-03T10:02:14.2187109Z",
+  "Updated": "2026-02-03T10:02:43.6055127Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.25.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

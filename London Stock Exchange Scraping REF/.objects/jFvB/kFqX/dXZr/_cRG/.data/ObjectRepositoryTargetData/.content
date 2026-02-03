@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="-KVd21Ik2EacKWHzNmrmMA" Reference="VAJPJA5VLECWTzQFSTmzfQ/_cRGSjnxi0O6D951NEJxNg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="londonstockexchange.com/live-markets/market-data-dashboard/price-explorer" CVScreenId="c0c0ddc2-f18e-4eca-aa74-41c202e02bc6" CvElementArea="92, 60, 20, 20" CvType="Icon" DesignTimeRectangle="83, 52, 38, 38" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='EQUITY, Shares Instrument type*' role='pane' /&gt;&lt;ctrl name='Odśwież' role='push button' /&gt;" Guid="0e500de5-b451-4fda-81ba-d5cb37ba5c96" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADpSURBVFhH7ZXRDYMwDEQZjBWYISuwAjNkBWZghYyV6j5c0Su0OdNSVPnjCXRJxJOdhK7v+3pFOg6uQoiphJhKiKmEmEqIqfyv2DRNdZ7nWkqpy7LUnHMdx/E+hpzXtOAWG4bhQQgSkLIMz5+ImUBK6WnMhAweb8ElZh/ek1q391QxtAzt4xysK3W6mG1yzj+JWwzt4pzB6WyZt4VLDPsHcM4cqaxLDJXA3rH7agscjHdzXuESA6jYXktNqqWqe7jF+IJFyyCJd8t4jYJbzOBfkt34PE/lsNi3CDGVEFMJMZUQUwkxlRBTuQHBA/HDABDDhwAAAABJRU5ErkJggg==" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='EQUITY, Shares Instrument type*' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="None">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target CVScreenId="c0c0ddc2-f18e-4eca-aa74-41c202e02bc6" CvElementArea="44, 13, 239, 35" CvTextArea="79, 22, 168, 15" CvTextArgument="EQUITY, Shares Instrument type" CvType="Button" DesignTimeRectangle="44, 12, 238, 35" ElementType="TabPage" FuzzyAccuracy="0.8" FuzzySelectorArgument="&lt;ctrl name='EQUITY, Shares Instrument type*' role='pane' /&gt;&lt;ctrl name='EQUITY, Shares Instrument type*' role='page tab' automationid='' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='EQUITY, Shares Instrument type*' /&gt;" Guid="dc00dcc6-dbae-4708-9f85-8f95c88d369f" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="33c7becba99f06861a2102a87b928f3e.png" xmlns="">0RV4xgQFWb0asDBlee16kFw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

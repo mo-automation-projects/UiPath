@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="DckNHw5pEUCGh9eFuWUZ7w" Reference="VAJPJA5VLECWTzQFSTmzfQ/ab6RjpBjU0ORcA2Kstadpw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="londonstockexchange.com/live-markets/market-data-dashboard/price-explorer" CVScreenId="dd5a195c-205b-49c9-95f7-3809f7ee4ba9" CvElementArea="666, 702, 125, 46" CvTextArea="680, 719, 97, 15" CvTextArgument="Instrument type" CvType="Button" DesignTimeRectangle="668, 704, 121, 43" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname=' Instrument type ' parentid='filters-toggle-content' tag='DIV' innertext=' Instrument type ' /&gt;" Guid="4c466d22-5f6c-4cf0-ad10-b514b0eea02c" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*Price explorer | London Stock Exchange*' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="None">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target CVScreenId="dd5a195c-205b-49c9-95f7-3809f7ee4ba9" CvTextArea="403, 661, 62, 18" CvTextArgument="Filter by:" CvType="Text" DesignTimeRectangle="389, 646, 1144, 44" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname=' Filter by: ' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' parentid='price-explorer-filters-wrapper' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' tag='DIV' innertext=' Filter by: ' check:innerText='Filter by:' /&gt;" Guid="5a043ed3-2982-465e-b818-dbce984e00ef" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="3a4a4d052f0f08f83cdd00102b93c4b8.png" xmlns="">0JLvBOM_gcE6QZrlAZ2m4pQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

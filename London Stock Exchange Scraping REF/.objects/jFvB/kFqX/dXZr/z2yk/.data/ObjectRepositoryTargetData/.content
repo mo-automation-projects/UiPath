@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="FR66sW7O2kWBE-_Xlc3DUQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="londonstockexchange.com/live-markets/market-data-dashboard/price-explorer" CVScreenId="5fc2207c-9f69-4330-a97d-60eb462c00a2" CvType="AnyWordGroup" DesignTimeRectangle="423, 310, 149, 20" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='bold-font-weight' parentid='price-explorer' tag='SPAN' /&gt;" Guid="23aff29a-c1a6-4bba-b052-6f26d1027728" ScopeSelectorArgument="&lt;html app='chrome.exe' title='EQUITY, Shares Instrument type - VOD Company, code or ISIN Price explorer | London Stock Exchange' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="None">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="5fc2207c-9f69-4330-a97d-60eb462c00a2" DesignTimeRectangle="389, 313, 1144, 14" FuzzySelectorArgument="&lt;webctrl class='price-explorer-legal-text small-font-size wrapper x-large-width x-large-width-padding' matching:class='fuzzy' fuzzylevel:class='0.0' parentid='price-explorer' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' tag='DIV' aaname=' As at  - All data delayed at least 15 minutes. ' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='As at * All data delayed at least 15 minutes.' /&gt;" Guid="322df611-fbbe-42d8-b2ab-ef37ed37ae39" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="b8b3c8cd0de0f986a2e52005c94145fe.png" xmlns="">0-LtR5zSw10Cxwg6uY-3liA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

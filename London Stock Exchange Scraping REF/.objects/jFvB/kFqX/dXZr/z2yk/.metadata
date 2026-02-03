@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Timestamp",
+  "Type": "Element",
+  "TaxonomyType": "Text",
+  "Id": "z2ykOrOfuUenONS45bpTbw",
+  "Reference": "VAJPJA5VLECWTzQFSTmzfQ/z2ykOrOfuUenONS45bpTbw",
+  "ParentRef": "VAJPJA5VLECWTzQFSTmzfQ/dXZrEwf5FUWyAw6jB6BqhA",
+  "Created": "2026-02-03T09:55:14.7896057Z",
+  "Updated": "2026-02-03T09:55:24.3020383Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.25.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

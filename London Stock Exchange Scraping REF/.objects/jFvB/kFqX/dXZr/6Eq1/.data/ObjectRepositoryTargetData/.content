@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="M-s6qwVyFkWvD6_Y87q9jQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="londonstockexchange.com/live-markets/market-data-dashboard/price-explorer" DesignTimeRectangle="402, 704, 166, 43" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname=' Company, code or ISIN ' parentid='filters-toggle-content' tag='DIV' innertext=' Company, code or ISIN ' /&gt;" Guid="0700bda7-80a0-4c18-b44d-4baae8ae07ea" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Price explorer | London Stock Exchange' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None">
+      <imageRef attrName="InformativeScreenshot" originalValue="0a46fcdcaa64242e47c570545474d6b0.png" xmlns="">0MM9GeT-_1kST8-CjupmUOQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">None</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

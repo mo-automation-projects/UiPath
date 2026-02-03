@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome - Price explorer @ London Stock Exchan",
+  "Type": "Screen",
+  "Id": "dXZrEwf5FUWyAw6jB6BqhA",
+  "Reference": "VAJPJA5VLECWTzQFSTmzfQ/dXZrEwf5FUWyAw6jB6BqhA",
+  "ParentRef": "VAJPJA5VLECWTzQFSTmzfQ/kFqXMKhiHUi4wXzKmJOhRw",
+  "Created": "2026-02-03T09:52:47.0820585Z",
+  "Updated": "2026-02-03T09:52:47.0820585Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.25.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
