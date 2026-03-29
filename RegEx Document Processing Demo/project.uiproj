@@ -1,0 +1,6 @@
+{
+  "Name": "RegEx Document Processing Demo",
+  "ProjectType": "Process",
+  "Description": "Robotic Enterprise Framework document processing demo showcasing the limitations of RegEx based data extraction.",
+  "MainFile": "Main.xaml"
+}
