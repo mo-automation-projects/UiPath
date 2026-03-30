@@ -8,7 +8,8 @@
     "UiPath.PDF.Activities": "[3.25.2]",
     "UiPath.System.Activities": "[26.2.1]",
     "UiPath.Testing.Activities": "[25.10.1]",
-    "UiPath.UIAutomation.Activities": "[25.10.28]"
+    "UiPath.UIAutomation.Activities": "[25.10.28]",
+    "UiPath.WebAPI.Activities": "[2.4.0]"
   },
   "webServices": [],
   "entitiesStores": [],
