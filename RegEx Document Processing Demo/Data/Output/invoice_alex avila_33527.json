@@ -1,1 +1,1 @@
-{"date":"2012-03-30","number":"33527","vendor":"SuperStore","amount":"109.13","order":"CA-2012-AA10315140-40998","success_rate":"1"}
+{"date":"2012-03-30","number":"33527","vendor":"SuperStore","amount":"109.13","lines":[{"item":"Fellowes Advanced Computer Series Surge Protectors","quantity":"2","rate":"52.98","amount":"105.96"}],"order":"CA-2012-AA10315140-40998","success_rate":"1"}

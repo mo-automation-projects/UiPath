@@ -1,1 +1,1 @@
-{"date":"2012-11-02","number":"37563","vendor":"SuperStore","amount":"1047.71","order":"CA-2012-AT10735140-41215","success_rate":"1"}
+{"date":"2012-11-02","number":"37563","vendor":"SuperStore","amount":"1047.71","lines":[{"item":"Xerox 1884","quantity":"9","rate":"143.86","amount":"1294.70"}],"order":"CA-2012-AT10735140-41215","success_rate":"1"}
