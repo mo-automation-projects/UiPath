@@ -4,10 +4,10 @@
     {
       "Connections": [],
       "DocumentTypeId": "NoGroup.NoCategory.Invoice",
-      "Group": "",
+      "Group": "Default",
       "Category": "",
       "Name": "Invoice",
-      "OptionalUniqueIdentifier": "",
+      "OptionalUniqueIdentifier": "IN",
       "TypeField": {
         "FieldId": "NoGroup.NoCategory.Invoice.DocumentType",
         "FieldName": "Document Type"
