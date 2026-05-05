@@ -113,7 +113,7 @@
         <av:Point x:Key="ShapeLocation">35,125</av:Point>
         <x:Double x:Key="StateContainerWidth">974</x:Double>
         <x:Double x:Key="StateContainerHeight">722</x:Double>
-        <av:PointCollection x:Key="ConnectorLocation">85,150 115,150 115,200.85000000000002 164,200.85000000000002</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">85,150 115,150 115,134.3 164,134.3</av:PointCollection>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>

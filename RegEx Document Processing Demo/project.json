@@ -4,7 +4,7 @@
   "description": "Robotic Enterprise Framework document processing demo showcasing \r\n1) the limitations of RegEx based data extraction\r\n2) usage of AI in a document processing workflow",
   "main": "Main.xaml",
   "dependencies": {
-    "IntelligentDocumentProcessing": "[1.0.12]",
+    "IntelligentDocumentProcessing": "[1.0.14]",
     "UiPath.DocumentUnderstanding.Activities": "[2.17.4]",
     "UiPath.DocumentUnderstanding.Digitizer": "[4.9.5]",
     "UiPath.Excel.Activities": "[3.4.1]",

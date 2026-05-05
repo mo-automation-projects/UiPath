@@ -174,7 +174,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1089,4464" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1089,6548" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JObject" Name="FinalJSON" />
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="WriteToCache" />
@@ -188,7 +188,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Document Understanding" sap:VirtualizedContainerService.HintSize="582,4441" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Document Understanding" sap:VirtualizedContainerService.HintSize="582,6525" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="DocumentText" />
         <Variable x:TypeArguments="p1:Document" Name="DocumentObjectModel" />
@@ -213,72 +213,103 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Digitize document" sap:VirtualizedContainerService.HintSize="548,1103" sap2010:WorkflowViewState.IdRef="Sequence_20">
+      <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="548,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_2" in_IsPath="True" in_Text="[in_FullPath]" out_HashCode="[HashCode]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Digitizing document using Google Cloud Vision OCR...&quot;]" />
-        <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[DocumentObjectModel]" DocumentPath="[in_FullPath]" DocumentText="[DocumentText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="416,334" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
-          <p:DigitizeDocument.OCREngine>
-            <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-              <ActivityFunc.Argument1>
-                <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-              </ActivityFunc.Argument1>
-              <ActivityFunc.Argument2>
-                <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
-              </ActivityFunc.Argument2>
-              <ui:GoogleCloudOCR FilterRegion="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Region="{x:Null}" Scale="{x:Null}" ApiKey="[in_Config(&quot;OCR_API_Key&quot;).ToString]" ComputeSkewAngle="False" DetectionMode="TextDetection" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,25" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" Image="[Image]" NoopExecution="False" PredictionId="[PredictionId]" ResizeToApiLimits="False" Result="[OCR_Result]" Text="[OCR_Text]" />
-            </ActivityFunc>
-          </p:DigitizeDocument.OCREngine>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </p:DigitizeDocument>
-        <If Condition="[String.IsNullOrEmpty(OCR_Text)]" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="If_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_40">
+      </i:Generate_Hash_Code>
+      <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="548,279" sap2010:WorkflowViewState.IdRef="Check_Cache_3" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;OCR&quot;}]" out_FilesFound="[FilesFound]" />
+      <If Condition="[FilesFound.Contains(&quot;OCR&quot;)]" sap:VirtualizedContainerService.HintSize="548,1827" sap2010:WorkflowViewState.IdRef="If_8">
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="520,175" sap2010:WorkflowViewState.IdRef="Sequence_50">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ReadTextFile File="{x:Null}" Content="[DocumentText]" DisplayName="Read Text File" FileName="[Path.Combine(in_Config(&quot;CacheFolder&quot;).ToString,HashCode + &quot;_OCR.txt&quot;)]" sap:VirtualizedContainerService.HintSize="486,115" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="520,1513" sap2010:WorkflowViewState.IdRef="Sequence_51">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Digitize document" sap:VirtualizedContainerService.HintSize="486,1453" sap2010:WorkflowViewState.IdRef="Sequence_20">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Throw Exception="[New System.Exception(&quot;OCR_Text is empty.&quot;)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_4" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Digitizing document using Google Cloud Vision OCR...&quot;]" />
+              <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[DocumentObjectModel]" DocumentPath="[in_FullPath]" DocumentText="[DocumentText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="452,334" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+                <p:DigitizeDocument.OCREngine>
+                  <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                    <ActivityFunc.Argument1>
+                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                    </ActivityFunc.Argument1>
+                    <ActivityFunc.Argument2>
+                      <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                    </ActivityFunc.Argument2>
+                    <ui:GoogleCloudOCR FilterRegion="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Region="{x:Null}" Scale="{x:Null}" ApiKey="[in_Config(&quot;OCR_API_Key&quot;).ToString]" ComputeSkewAngle="False" DetectionMode="TextDetection" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,25" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" Image="[Image]" NoopExecution="False" PredictionId="[PredictionId]" ResizeToApiLimits="False" Result="[OCR_Result]" Text="[OCR_Text]" />
+                  </ActivityFunc>
+                </p:DigitizeDocument.OCREngine>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </p:DigitizeDocument>
+              <If Condition="[String.IsNullOrEmpty(OCR_Text)]" sap:VirtualizedContainerService.HintSize="452,539" sap2010:WorkflowViewState.IdRef="If_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Throw Exception="[New System.Exception(&quot;OCR_Text is empty.&quot;)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Trace" Message="[String.Format(&quot;OCR result: {0}.&quot;,OCR_Text)]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+              <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="452,322" sap2010:WorkflowViewState.IdRef="Update_Cache_10" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_OCR.txt&quot;]" in_Overwrite="True" in_Text="[OCR_Text]" out_FilePath="[FilePath]" />
             </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_41">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Trace" Message="[String.Format(&quot;OCR result: {0}.&quot;,OCR_Text)]" />
-            </Sequence>
-          </If.Else>
-        </If>
-        <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_1" in_Text="[OCR_Text]" out_HashCode="[HashCode]">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </i:Generate_Hash_Code>
-        <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="416,270" sap2010:WorkflowViewState.IdRef="Check_Cache_2" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;Classification&quot;,&quot;Header&quot;,&quot;LineItems&quot;}]" out_FilesFound="[FilesFound]" />
-      </Sequence>
-      <Sequence DisplayName="Classify document" sap:VirtualizedContainerService.HintSize="548,1475" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          </Sequence>
+        </If.Else>
+      </If>
+      <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="548,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_1" in_IsPath="False" in_Text="[DocumentText]" out_HashCode="[HashCode]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </i:Generate_Hash_Code>
+      <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="548,279" sap2010:WorkflowViewState.IdRef="Check_Cache_2" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;Classification&quot;,&quot;Header&quot;,&quot;LineItems&quot;}]" out_FilesFound="[FilesFound]" />
+      <Sequence DisplayName="Classify document" sap:VirtualizedContainerService.HintSize="548,1649" sap2010:WorkflowViewState.IdRef="Sequence_18">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -329,15 +360,16 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:MultipleAssign>
-        <If Condition="[FilesFound.Contains(&quot;Classify&quot;)]" sap:VirtualizedContainerService.HintSize="478,1141" sap2010:WorkflowViewState.IdRef="If_6">
+        <If Condition="[FilesFound.Contains(&quot;Classify&quot;)]" sap:VirtualizedContainerService.HintSize="478,1315" sap2010:WorkflowViewState.IdRef="If_6">
           <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Sequence_44">
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,349" sap2010:WorkflowViewState.IdRef="Sequence_44">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ReadTextFile Content="{x:Null}" File="{x:Null}" DisplayName="Read Text File" FileName="[Path.Combine(in_Config(&quot;CacheFolder&quot;).ToString,HashCode + &quot;_Classification.txt&quot;)]" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+              <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[Path.Combine(in_Config(&quot;CacheFolder&quot;).ToString,HashCode + &quot;_Classification.txt&quot;)]" sap:VirtualizedContainerService.HintSize="416,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+              <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="416,165" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[Document_Classification]" JsonString="[APIcall_ResponseString]" />
             </Sequence>
           </If.Then>
           <If.Else>
@@ -354,22 +386,23 @@
           </If.Else>
         </If>
       </Sequence>
-      <Sequence DisplayName="Extract data" sap:VirtualizedContainerService.HintSize="548,1614" sap2010:WorkflowViewState.IdRef="Sequence_19">
+      <Sequence DisplayName="Extract data" sap:VirtualizedContainerService.HintSize="548,1788" sap2010:WorkflowViewState.IdRef="Sequence_19">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[FilesFound.Contains(&quot;Header&quot;)]" sap:VirtualizedContainerService.HintSize="514,1474" sap2010:WorkflowViewState.IdRef="If_7">
+        <If Condition="[FilesFound.Contains(&quot;Header&quot;)]" sap:VirtualizedContainerService.HintSize="514,1648" sap2010:WorkflowViewState.IdRef="If_7">
           <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,175" sap2010:WorkflowViewState.IdRef="Sequence_48">
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,349" sap2010:WorkflowViewState.IdRef="Sequence_48">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ReadTextFile Content="{x:Null}" File="{x:Null}" DisplayName="Read Text File" FileName="[Path.Combine(in_Config(&quot;CacheFolder&quot;).ToString,HashCode + &quot;_Header.txt&quot;)]" sap:VirtualizedContainerService.HintSize="478,115" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+              <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[Path.Combine(in_Config(&quot;CacheFolder&quot;).ToString,HashCode + &quot;_Header.txt&quot;)]" sap:VirtualizedContainerService.HintSize="478,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+              <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="478,165" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[Document_BasicData]" JsonString="[APIcall_ResponseString]" />
             </Sequence>
           </If.Then>
           <If.Else>
