@@ -1,9 +1,10 @@
 {
-  "name": "RegEx Document Processing Demo",
+  "name": "Document Processing Demo",
   "projectId": "820e8fc5-bb78-418a-92ef-d61bbc6c81e5",
-  "description": "Robotic Enterprise Framework document processing demo showcasing the limitations of RegEx based data extraction.",
+  "description": "Robotic Enterprise Framework document processing demo showcasing \r\n1) the limitations of RegEx based data extraction\r\n2) usage of AI in a document processing workflow",
   "main": "Main.xaml",
   "dependencies": {
+    "IntelligentDocumentProcessing": "[1.0.12]",
     "UiPath.DocumentUnderstanding.Activities": "[2.17.4]",
     "UiPath.DocumentUnderstanding.Digitizer": "[4.9.5]",
     "UiPath.Excel.Activities": "[3.4.1]",
