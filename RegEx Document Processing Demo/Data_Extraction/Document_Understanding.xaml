@@ -1,5 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DU_DataExtraction" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:i="clr-namespace:IntelligentDocumentProcessing;assembly=IntelligentDocumentProcessing" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DU_DataExtraction" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:i="clr-namespace:IntelligentDocumentProcessing;assembly=IntelligentDocumentProcessing" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uwaj="clr-namespace:UiPath.Web.Activities.JSON;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="out_JSONstring" Type="OutArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_FullPath" Type="InArgument(x:String)" />
   </x:Members>
@@ -80,6 +81,7 @@
       <x:String>UiPath.Web.Activities</x:String>
       <x:String>IntelligentDocumentProcessing</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Web.Activities.JSON</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -174,7 +176,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1120,8378" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1120,3011" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="HashCode" />
       <Variable x:TypeArguments="s:String[]" Name="FilesFound" />
@@ -189,7 +191,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Document Understanding" sap:VirtualizedContainerService.HintSize="582,8355" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Document Understanding" sap:VirtualizedContainerService.HintSize="556,2530" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="DocumentText" />
         <Variable x:TypeArguments="p1:Document" Name="DocumentObjectModel" />
@@ -206,7 +208,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="548,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_2" in_IsPath="True" in_Text="[in_FullPath]" out_HashCode="[HashCode]">
+      <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="522,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_2" in_IsPath="True" in_Text="[in_FullPath]" out_HashCode="[HashCode]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -214,8 +216,14 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </i:Generate_Hash_Code>
-      <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="548,279" sap2010:WorkflowViewState.IdRef="Check_Cache_3" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;Classification&quot;,&quot;Header&quot;,&quot;LineItems&quot;,&quot;OCR&quot;}]" out_FilesFound="[FilesFound]" />
-      <If Condition="[FilesFound.Contains(&quot;OCR&quot;)]" sap:VirtualizedContainerService.HintSize="548,1827" sap2010:WorkflowViewState.IdRef="If_8">
+      <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="522,279" sap2010:WorkflowViewState.IdRef="Check_Cache_3" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;Classification&quot;,&quot;Header&quot;,&quot;LineItems&quot;,&quot;OCR&quot;}]" out_FilesFound="[FilesFound]" />
+      <If Condition="[FilesFound.Contains(&quot;OCR&quot;)]" sap:VirtualizedContainerService.HintSize="522,1827" sap2010:WorkflowViewState.IdRef="If_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
         <If.Then>
           <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="520,175" sap2010:WorkflowViewState.IdRef="Sequence_50">
             <sap:WorkflowViewStateService.ViewState>
@@ -293,10 +301,10 @@
           </Sequence>
         </If.Else>
       </If>
-      <Sequence DisplayName="Classify document" sap:VirtualizedContainerService.HintSize="548,1918" sap2010:WorkflowViewState.IdRef="Sequence_18">
+      <Sequence DisplayName="Classify document" sap:VirtualizedContainerService.HintSize="522,57" sap2010:WorkflowViewState.IdRef="Sequence_18">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -385,10 +393,10 @@
           </If.Else>
         </If>
       </Sequence>
-      <Sequence DisplayName="Extract data" sap:VirtualizedContainerService.HintSize="548,4021" sap2010:WorkflowViewState.IdRef="Sequence_19">
+      <Sequence DisplayName="Extract data" sap:VirtualizedContainerService.HintSize="522,48" sap2010:WorkflowViewState.IdRef="Sequence_19">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -509,5 +517,14 @@
         </If>
       </Sequence>
     </Sequence>
+    <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="556,169" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="njl:JObject">[Document_Header]</InArgument>
+      </InvokeMethod.TargetObject>
+      <InArgument x:TypeArguments="x:String">lines</InArgument>
+      <InArgument x:TypeArguments="njl:JArray">[Document_LineItems]</InArgument>
+    </InvokeMethod>
+    <uwaj:SerializeJson Settings="{x:Null}" DisplayName="Serialize JSON" sap:VirtualizedContainerService.HintSize="556,123" sap2010:WorkflowViewState.IdRef="SerializeJson_1" InputObject="[Document_Header]" Result="[out_JSONstring]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="556,166" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Trace" Message="[&quot;Extracted data: &quot; + out_JSONstring]" />
   </Sequence>
 </Activity>
