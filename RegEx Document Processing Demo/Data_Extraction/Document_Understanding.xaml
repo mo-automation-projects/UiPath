@@ -176,7 +176,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1120,3011" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1118,9486" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="HashCode" />
       <Variable x:TypeArguments="s:String[]" Name="FilesFound" />
@@ -185,39 +185,166 @@
       <Variable x:TypeArguments="njl:JObject" Name="Document_Header" />
       <Variable x:TypeArguments="njl:JArray" Name="Document_LineItems" />
       <Variable x:TypeArguments="x:String" Name="CacheFilePath" />
+      <Variable x:TypeArguments="x:String" Name="DocumentText" />
+      <Variable x:TypeArguments="p1:Document" Name="DocumentObjectModel" />
+      <Variable x:TypeArguments="x:String" Name="OCR_Text" />
+      <Variable x:TypeArguments="scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))" Name="OCR_Result" />
+      <Variable x:TypeArguments="x:String" Name="APIcall_Body" />
+      <Variable x:TypeArguments="x:String" Name="APIcall_Endpoint" />
+      <Variable x:TypeArguments="x:String" Name="APIcall_URL" />
+      <Variable x:TypeArguments="x:String" Name="APIcall_SafeBodyPart" />
+      <Variable x:TypeArguments="x:String" Name="APIcall_ResponseString" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Document Understanding" sap:VirtualizedContainerService.HintSize="556,2530" sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="DocumentText" />
-        <Variable x:TypeArguments="p1:Document" Name="DocumentObjectModel" />
-        <Variable x:TypeArguments="x:String" Name="OCR_Text" />
-        <Variable x:TypeArguments="scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))" Name="OCR_Result" />
-        <Variable x:TypeArguments="x:String" Name="APIcall_Body" />
-        <Variable x:TypeArguments="x:String" Name="APIcall_Endpoint" />
-        <Variable x:TypeArguments="x:String" Name="APIcall_URL" />
-        <Variable x:TypeArguments="x:String" Name="APIcall_SafeBodyPart" />
-        <Variable x:TypeArguments="x:String" Name="APIcall_ResponseString" />
-      </Sequence.Variables>
+    <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="548,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_2" in_IsPath="True" in_Text="[in_FullPath]" out_HashCode="[HashCode]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="522,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_2" in_IsPath="True" in_Text="[in_FullPath]" out_HashCode="[HashCode]">
+    </i:Generate_Hash_Code>
+    <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="548,279" sap2010:WorkflowViewState.IdRef="Check_Cache_3" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;Classification&quot;,&quot;Header&quot;,&quot;LineItems&quot;,&quot;OCR&quot;}]" out_FilesFound="[FilesFound]" />
+    <If Condition="[FilesFound.Contains(&quot;OCR&quot;)]" sap:VirtualizedContainerService.HintSize="548,1827" sap2010:WorkflowViewState.IdRef="If_8">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="520,175" sap2010:WorkflowViewState.IdRef="Sequence_50">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadTextFile File="{x:Null}" Content="[DocumentText]" DisplayName="Read Text File" FileName="[Path.Combine(in_Config(&quot;CacheFolder&quot;).ToString,HashCode + &quot;_OCR.txt&quot;)]" sap:VirtualizedContainerService.HintSize="486,115" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="520,1513" sap2010:WorkflowViewState.IdRef="Sequence_51">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Digitize document" sap:VirtualizedContainerService.HintSize="486,1453" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Digitizing document using Google Cloud Vision OCR...&quot;]" />
+            <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[DocumentObjectModel]" DocumentPath="[in_FullPath]" DocumentText="[DocumentText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="452,334" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+              <p:DigitizeDocument.OCREngine>
+                <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                  <ActivityFunc.Argument1>
+                    <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                  </ActivityFunc.Argument1>
+                  <ActivityFunc.Argument2>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                  </ActivityFunc.Argument2>
+                  <ui:GoogleCloudOCR FilterRegion="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Region="{x:Null}" Scale="{x:Null}" ApiKey="[in_Config(&quot;OCR_API_Key&quot;).ToString]" ComputeSkewAngle="False" DetectionMode="TextDetection" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,25" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" Image="[Image]" NoopExecution="False" PredictionId="[PredictionId]" ResizeToApiLimits="False" Result="[OCR_Result]" Text="[OCR_Text]" />
+                </ActivityFunc>
+              </p:DigitizeDocument.OCREngine>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p:DigitizeDocument>
+            <If Condition="[String.IsNullOrEmpty(OCR_Text)]" sap:VirtualizedContainerService.HintSize="452,539" sap2010:WorkflowViewState.IdRef="If_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw Exception="[New System.Exception(&quot;OCR_Text is empty.&quot;)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Trace" Message="[String.Format(&quot;OCR result: {0}.&quot;,OCR_Text)]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="452,322" sap2010:WorkflowViewState.IdRef="Update_Cache_10" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_OCR.txt&quot;]" in_Overwrite="True" in_Text="[OCR_Text]" out_FilePath="[FilePath]" />
+          </Sequence>
+        </Sequence>
+      </If.Else>
+    </If>
+    <Sequence DisplayName="Classify document" sap:VirtualizedContainerService.HintSize="548,2103" sap2010:WorkflowViewState.IdRef="Sequence_18">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,242" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[APIcall_Endpoint]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("Google_GenAI_Endpoint").ToString]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[APIcall_URL]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[APIcall_Endpoint + String.Format("?key={0}",in_Config("Gemini_API_Key").ToString)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[APIcall_SafeBodyPart]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[DocumentText.Replace("""", "'").Replace(vbCrLf, " ").Replace(vbNewLine,"").Replace(vbLf,"")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">["{""contents"": [{""parts"": [{""text"": ""Classify document into: invoice, contract, receipt, other. Return ONLY valid JSON with fields document_type and confidence which is a number between 0 and 1. Return ONLY raw JSON. Do NOT use markdown, code blocks, or backticks. Text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-      </i:Generate_Hash_Code>
-      <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="522,279" sap2010:WorkflowViewState.IdRef="Check_Cache_3" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;Classification&quot;,&quot;Header&quot;,&quot;LineItems&quot;,&quot;OCR&quot;}]" out_FilesFound="[FilesFound]" />
-      <If Condition="[FilesFound.Contains(&quot;OCR&quot;)]" sap:VirtualizedContainerService.HintSize="522,1827" sap2010:WorkflowViewState.IdRef="If_8">
+      </ui:MultipleAssign>
+      <If Condition="[FilesFound.Contains(&quot;Classification&quot;)]" sap:VirtualizedContainerService.HintSize="478,1769" sap2010:WorkflowViewState.IdRef="If_6">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -225,306 +352,192 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="520,175" sap2010:WorkflowViewState.IdRef="Sequence_50">
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,699" sap2010:WorkflowViewState.IdRef="Sequence_44">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ReadTextFile File="{x:Null}" Content="[DocumentText]" DisplayName="Read Text File" FileName="[Path.Combine(in_Config(&quot;CacheFolder&quot;).ToString,HashCode + &quot;_OCR.txt&quot;)]" sap:VirtualizedContainerService.HintSize="486,115" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+            <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[CacheFilePath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("CacheFolder").ToString,HashCode + "_Classification.txt")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[CacheFilePath]" sap:VirtualizedContainerService.HintSize="416,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;Classification JSON loaded from cache file: &quot; + CacheFilePath]" />
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="416,165" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[Document_Classification]" JsonString="[APIcall_ResponseString]" />
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="520,1513" sap2010:WorkflowViewState.IdRef="Sequence_51">
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,940" sap2010:WorkflowViewState.IdRef="Sequence_45">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Digitize document" sap:VirtualizedContainerService.HintSize="486,1453" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Warn" Message="[&quot;Classification file not found in cache.&quot;]" />
+            <i:Perform_API_call out_JArray="{x:Null}" DisplayName="POST call" sap:VirtualizedContainerService.HintSize="416,383" sap2010:WorkflowViewState.IdRef="Perform_API_call_4" in_Body="[APIcall_Body]" in_Method="POST" in_URL="[APIcall_URL]" out_JObject="[Document_Classification]" out_ResponseText="[APIcall_ResponseString]" />
+            <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="416,322" sap2010:WorkflowViewState.IdRef="Update_Cache_8" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_Classification.txt&quot;]" in_Overwrite="True" in_Text="[APIcall_ResponseString]" out_FilePath="[FilePath]" />
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <If Condition="[Document_Classification(&quot;document_type&quot;).ToString.ToLower.Equals(&quot;invoice&quot;)]" sap:VirtualizedContainerService.HintSize="548,539" sap2010:WorkflowViewState.IdRef="If_10">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_55">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Info" Message="[String.Format(&quot;The classification results are: document_type - {0}, confidence - {1}.&quot;,Document_Classification(&quot;document_type&quot;).ToString,Document_Classification(&quot;confidence&quot;).ToString)]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_56">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[New System.Exception(String.Format(&quot;The classification results are: document_type - {0}, confidence - {1}. This document type is not supported.&quot;,Document_Classification(&quot;document_type&quot;).ToString,Document_Classification(&quot;confidence&quot;).ToString))]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_5" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <Sequence DisplayName="Extract data" sap:VirtualizedContainerService.HintSize="548,4030" sap2010:WorkflowViewState.IdRef="Sequence_19">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[FilesFound.Contains(&quot;Header&quot;)]" sap:VirtualizedContainerService.HintSize="514,2102" sap2010:WorkflowViewState.IdRef="If_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,699" sap2010:WorkflowViewState.IdRef="Sequence_48">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[CacheFilePath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("CacheFolder").ToString,HashCode + "_Header.txt")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[CacheFilePath]" sap:VirtualizedContainerService.HintSize="478,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_5" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Header JSON loaded from cache file: &quot; + CacheFilePath]" />
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="478,165" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[Document_Header]" JsonString="[APIcall_ResponseString]" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,1264" sap2010:WorkflowViewState.IdRef="Sequence_46">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Warn" Message="[&quot;Header file not found in cache.&quot;]" />
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,149" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract the following data from the document: invoice number, date, vendor name, total amount, currency, order ID,  From the document. Return ONLY JSON with fields: number, date, vendor, amount, currency, order. Document text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Digitizing document using Google Cloud Vision OCR...&quot;]" />
-              <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[DocumentObjectModel]" DocumentPath="[in_FullPath]" DocumentText="[DocumentText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="452,334" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
-                <p:DigitizeDocument.OCREngine>
-                  <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-                    <ActivityFunc.Argument1>
-                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-                    </ActivityFunc.Argument1>
-                    <ActivityFunc.Argument2>
-                      <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
-                    </ActivityFunc.Argument2>
-                    <ui:GoogleCloudOCR FilterRegion="{x:Null}" Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Region="{x:Null}" Scale="{x:Null}" ApiKey="[in_Config(&quot;OCR_API_Key&quot;).ToString]" ComputeSkewAngle="False" DetectionMode="TextDetection" DisplayName="Google Cloud Vision OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,25" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" Image="[Image]" NoopExecution="False" PredictionId="[PredictionId]" ResizeToApiLimits="False" Result="[OCR_Result]" Text="[OCR_Text]" />
-                  </ActivityFunc>
-                </p:DigitizeDocument.OCREngine>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </p:DigitizeDocument>
-              <If Condition="[String.IsNullOrEmpty(OCR_Text)]" sap:VirtualizedContainerService.HintSize="452,539" sap2010:WorkflowViewState.IdRef="If_4">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_40">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Throw Exception="[New System.Exception(&quot;OCR_Text is empty.&quot;)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_4" />
-                  </Sequence>
-                </If.Then>
-                <If.Else>
-                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_41">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Trace" Message="[String.Format(&quot;OCR result: {0}.&quot;,OCR_Text)]" />
-                  </Sequence>
-                </If.Else>
-              </If>
-              <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="452,322" sap2010:WorkflowViewState.IdRef="Update_Cache_10" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_OCR.txt&quot;]" in_Overwrite="True" in_Text="[OCR_Text]" out_FilePath="[FilePath]" />
-            </Sequence>
+            </ui:MultipleAssign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[String.Format(&quot;Sending POST call to endpoint: {0} ...&quot;, APIcall_Endpoint)]" />
+            <i:Perform_API_call out_JArray="{x:Null}" DisplayName="POST call" sap:VirtualizedContainerService.HintSize="478,383" sap2010:WorkflowViewState.IdRef="Perform_API_call_5" in_Body="[APIcall_Body]" in_Method="POST" in_URL="[APIcall_URL]" out_JObject="[Document_Header]" out_ResponseText="[APIcall_ResponseString]" />
+            <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="478,322" sap2010:WorkflowViewState.IdRef="Update_Cache_9" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_Header.txt&quot;]" in_Overwrite="True" in_Text="[APIcall_ResponseString]" out_FilePath="[FilePath]" />
           </Sequence>
         </If.Else>
       </If>
-      <Sequence DisplayName="Classify document" sap:VirtualizedContainerService.HintSize="522,57" sap2010:WorkflowViewState.IdRef="Sequence_18">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
-          <ui:MultipleAssign.AssignOperations>
-            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[APIcall_Endpoint]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String">[in_Config("Google_GenAI_Endpoint").ToString]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[APIcall_URL]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String">[APIcall_Endpoint + String.Format("?key={0}",in_Config("Gemini_API_Key").ToString)]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[APIcall_SafeBodyPart]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String">[DocumentText.Replace("""", "'").Replace(vbCrLf, " ").Replace(vbNewLine,"").Replace(vbLf,"")]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String">["{""contents"": [{""parts"": [{""text"": ""Classify document into: invoice, contract, receipt, other. Return ONLY valid JSON with fields document_type and confidence which is a number between 0 and 1. Return ONLY raw JSON. Do NOT use markdown, code blocks, or backticks. Text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-            </scg:List>
-          </ui:MultipleAssign.AssignOperations>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:MultipleAssign>
-        <If Condition="[FilesFound.Contains(&quot;Classification&quot;)]" sap:VirtualizedContainerService.HintSize="452,1769" sap2010:WorkflowViewState.IdRef="If_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,699" sap2010:WorkflowViewState.IdRef="Sequence_44">
+      <If Condition="[FilesFound.Contains(&quot;LineItems&quot;)]" sap:VirtualizedContainerService.HintSize="514,1836" sap2010:WorkflowViewState.IdRef="If_9">
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,617" sap2010:WorkflowViewState.IdRef="Sequence_53">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[CacheFilePath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("CacheFolder").ToString,HashCode + "_LineItems.txt")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[CacheFilePath]" sap:VirtualizedContainerService.HintSize="478,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_6" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;LineItems JSON loaded from cache file: &quot; + CacheFilePath]" />
+            <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="478,83" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_2" JsonArray="[Document_LineItems]" JsonString="[APIcall_ResponseString]" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,1089" sap2010:WorkflowViewState.IdRef="Sequence_54">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Warn" Message="[&quot;LineItems file not found in cache.&quot;]" />
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,149" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract invoice line items. For each line item return the fields: item, quantity, rate, amount. Return ONLY JSON array. If you can not recognize any line items, then return an empty array. Document text: " &amp; APIcall_SafeBodyPart &amp; """ }]}]}"]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[CacheFilePath]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("CacheFolder").ToString,HashCode + "_Classification.txt")]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[CacheFilePath]" sap:VirtualizedContainerService.HintSize="416,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;Classification JSON loaded from cache file: &quot; + CacheFilePath]" />
-              <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="416,165" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[Document_Classification]" JsonString="[APIcall_ResponseString]" />
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,940" sap2010:WorkflowViewState.IdRef="Sequence_45">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Warn" Message="[&quot;Classification file not found in cache.&quot;]" />
-              <i:Perform_API_call out_JArray="{x:Null}" DisplayName="POST call" sap:VirtualizedContainerService.HintSize="416,383" sap2010:WorkflowViewState.IdRef="Perform_API_call_4" in_Body="[APIcall_Body]" in_Method="POST" in_URL="[APIcall_URL]" out_JObject="[Document_Classification]" out_ResponseText="[APIcall_ResponseString]" />
-              <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="416,322" sap2010:WorkflowViewState.IdRef="Update_Cache_8" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_Classification.txt&quot;]" in_Overwrite="True" in_Text="[APIcall_ResponseString]" out_FilePath="[FilePath]" />
-            </Sequence>
-          </If.Else>
-        </If>
-      </Sequence>
-      <Sequence DisplayName="Extract data" sap:VirtualizedContainerService.HintSize="522,48" sap2010:WorkflowViewState.IdRef="Sequence_19">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[FilesFound.Contains(&quot;Header&quot;)]" sap:VirtualizedContainerService.HintSize="514,2102" sap2010:WorkflowViewState.IdRef="If_7">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,699" sap2010:WorkflowViewState.IdRef="Sequence_48">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_2">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[CacheFilePath]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("CacheFolder").ToString,HashCode + "_Header.txt")]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[CacheFilePath]" sap:VirtualizedContainerService.HintSize="478,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_5" />
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Header JSON loaded from cache file: &quot; + CacheFilePath]" />
-              <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="478,165" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[Document_Header]" JsonString="[APIcall_ResponseString]" />
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,1264" sap2010:WorkflowViewState.IdRef="Sequence_46">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Warn" Message="[&quot;Header file not found in cache.&quot;]" />
-              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,149" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
-                <ui:MultipleAssign.AssignOperations>
-                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
-                      <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
-                      </ui:AssignOperation.To>
-                      <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract invoice_number, Date, total_amount, currency From the document. Return ONLY JSON With these fields. Document text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
-                      </ui:AssignOperation.Value>
-                    </ui:AssignOperation>
-                  </scg:List>
-                </ui:MultipleAssign.AssignOperations>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:MultipleAssign>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[String.Format(&quot;Sending POST call to endpoint: {0} ...&quot;, APIcall_Endpoint)]" />
-              <i:Perform_API_call out_JArray="{x:Null}" DisplayName="POST call" sap:VirtualizedContainerService.HintSize="478,383" sap2010:WorkflowViewState.IdRef="Perform_API_call_5" in_Body="[APIcall_Body]" in_Method="POST" in_URL="[APIcall_URL]" out_JObject="[Document_Header]" out_ResponseText="[APIcall_ResponseString]" />
-              <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="478,322" sap2010:WorkflowViewState.IdRef="Update_Cache_9" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_Header.txt&quot;]" in_Overwrite="True" in_Text="[APIcall_ResponseString]" out_FilePath="[FilePath]" />
-            </Sequence>
-          </If.Else>
-        </If>
-        <If Condition="[FilesFound.Contains(&quot;LineItems&quot;)]" sap:VirtualizedContainerService.HintSize="514,1836" sap2010:WorkflowViewState.IdRef="If_9">
-          <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,617" sap2010:WorkflowViewState.IdRef="Sequence_53">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_3">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[CacheFilePath]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("CacheFolder").ToString,HashCode + "_LineItems.txt")]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:ReadTextFile File="{x:Null}" Content="[APIcall_ResponseString]" DisplayName="Read Text File" FileName="[CacheFilePath]" sap:VirtualizedContainerService.HintSize="478,124" sap2010:WorkflowViewState.IdRef="ReadTextFile_6" />
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;LineItems JSON loaded from cache file: &quot; + CacheFilePath]" />
-              <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="478,83" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_2" JsonArray="[Document_LineItems]" JsonString="[APIcall_ResponseString]" />
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,1089" sap2010:WorkflowViewState.IdRef="Sequence_54">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Warn" Message="[&quot;LineItems file not found in cache.&quot;]" />
-              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,149" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
-                <ui:MultipleAssign.AssignOperations>
-                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                      <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
-                      </ui:AssignOperation.To>
-                      <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract invoice line items. For each line item return the fields: item_name, quantity, unit_price, total_price. Return ONLY JSON array. If you can not recognize any line items, then return an empty array. Document text: " &amp; APIcall_SafeBodyPart &amp; """ }]}]}"]</InArgument>
-                      </ui:AssignOperation.Value>
-                    </ui:AssignOperation>
-                  </scg:List>
-                </ui:MultipleAssign.AssignOperations>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:MultipleAssign>
-              <i:Perform_API_call out_JObject="{x:Null}" DisplayName="POST call" sap:VirtualizedContainerService.HintSize="478,383" sap2010:WorkflowViewState.IdRef="Perform_API_call_6" in_Body="[APIcall_Body]" in_Method="POST" in_URL="[APIcall_URL]" out_JArray="[Document_LineItems]" out_ResponseText="[APIcall_ResponseString]" />
-              <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="478,322" sap2010:WorkflowViewState.IdRef="Update_Cache_12" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_LineItems.txt&quot;]" in_Overwrite="True" in_Text="[APIcall_ResponseString]" out_FilePath="[FilePath]" />
-            </Sequence>
-          </If.Else>
-        </If>
-      </Sequence>
+            </ui:MultipleAssign>
+            <i:Perform_API_call out_JObject="{x:Null}" DisplayName="POST call" sap:VirtualizedContainerService.HintSize="478,383" sap2010:WorkflowViewState.IdRef="Perform_API_call_6" in_Body="[APIcall_Body]" in_Method="POST" in_URL="[APIcall_URL]" out_JArray="[Document_LineItems]" out_ResponseText="[APIcall_ResponseString]" />
+            <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="478,322" sap2010:WorkflowViewState.IdRef="Update_Cache_12" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_LineItems.txt&quot;]" in_Overwrite="True" in_Text="[APIcall_ResponseString]" out_FilePath="[FilePath]" />
+          </Sequence>
+        </If.Else>
+      </If>
     </Sequence>
-    <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="556,169" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+    <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="548,169" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
       <InvokeMethod.TargetObject>
         <InArgument x:TypeArguments="njl:JObject">[Document_Header]</InArgument>
       </InvokeMethod.TargetObject>
       <InArgument x:TypeArguments="x:String">lines</InArgument>
       <InArgument x:TypeArguments="njl:JArray">[Document_LineItems]</InArgument>
     </InvokeMethod>
-    <uwaj:SerializeJson Settings="{x:Null}" DisplayName="Serialize JSON" sap:VirtualizedContainerService.HintSize="556,123" sap2010:WorkflowViewState.IdRef="SerializeJson_1" InputObject="[Document_Header]" Result="[out_JSONstring]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="556,166" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Trace" Message="[&quot;Extracted data: &quot; + out_JSONstring]" />
+    <uwaj:SerializeJson Settings="{x:Null}" DisplayName="Serialize JSON" sap:VirtualizedContainerService.HintSize="548,123" sap2010:WorkflowViewState.IdRef="SerializeJson_1" InputObject="[Document_Header]" Result="[out_JSONstring]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="548,166" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Trace" Message="[&quot;Extracted data: &quot; + out_JSONstring]" />
   </Sequence>
 </Activity>
