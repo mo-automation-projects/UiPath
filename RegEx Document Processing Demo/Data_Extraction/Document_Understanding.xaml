@@ -457,7 +457,7 @@
                       <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract the following data from the document: invoice number, date, vendor name, total amount, currency, order ID,  From the document. Return ONLY JSON with fields: number, date, vendor, amount, currency, order. Document text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
+                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract the following data from the document: invoice number, date, vendor name, total amount, currency, order ID,  From the document. Return ONLY JSON with fields: number, date, vendor, amount, currency, order. The values of the fields should be in text format. The date format should be yyyy-MM-dd. Document text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
@@ -512,7 +512,7 @@
                       <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract invoice line items. For each line item return the fields: item, quantity, rate, amount. Return ONLY JSON array. If you can not recognize any line items, then return an empty array. Document text: " &amp; APIcall_SafeBodyPart &amp; """ }]}]}"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract invoice line items. For each line item return the fields: item, quantity, rate, amount. Return ONLY JSON array. The values of the fields should be in text format. If you can not recognize any line items, then return an empty array. Document text: " &amp; APIcall_SafeBodyPart &amp; """ }]}]}"]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
