@@ -247,10 +247,12 @@
         <InArgument x:TypeArguments="x:String">[Path.GetFileNameWithoutExtension(FullPath) &amp; ".json"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;Output file '{0}' was successfully saved to '{1}'.&quot;,OutputFileName,in_Config(&quot;OutputFolder&quot;).ToString)]" />
     <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text File" FileName="[Path.Combine(in_Config(&quot;OutputFolder&quot;).ToString,OutputFileName)]" sap:VirtualizedContainerService.HintSize="452,176" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[JSONstring]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;Output file '{0}' was successfully saved to '{1}'.&quot;,OutputFileName,in_Config(&quot;OutputFolder&quot;).ToString)]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoice_Validation - Invoke Workflow File (Data_Validation\Invoice_Validation.xaml)" sap:VirtualizedContainerService.HintSize="452,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Data_Validation\Invoice_Validation.xaml">
       <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FileName">[FileName]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_JSONstring">[JSONstring]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
