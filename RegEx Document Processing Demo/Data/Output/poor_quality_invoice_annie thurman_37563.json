@@ -1,16 +1,1 @@
-{
-    "number": "37563",
-    "date": "2012-11-02",
-    "vendor": "SuperStore",
-    "amount": "1047.71",
-    "currency": "$",
-    "order": "CA-2012-AT10735140-41215",
-    "lines": [
-        {
-            "item": "Xerox 1884 Paper, Office Supplies, OFF - PA - 6433",
-            "quantity": "9",
-            "rate": "$ 143.86",
-            "amount": "$ 1,294.70"
-        }
-    ]
-}
+{"number":"37563","date":"2012-11-02","vendor":"SuperStore","amount":"1047.71","currency":"$","order":"CA-2012-AT10735140-41215","lines":[{"item":"Xerox 1884 Paper, Office Supplies, OFF-PA-6433","quantity":"9","rate":"$143.86","amount":"$1,294.70"}],"processing_metadata":{"processed_at":"2026-05-09T13:54:06Z","ocr_engine":"google_vision","llm_model":"gemini-2.5-flash","pipeline_version":"1.0.0"}}
