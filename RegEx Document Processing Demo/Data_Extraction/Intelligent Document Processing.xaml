@@ -1,7 +1,7 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DU_DataExtraction" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:i="clr-namespace:IntelligentDocumentProcessing;assembly=IntelligentDocumentProcessing" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uwaj="clr-namespace:UiPath.Web.Activities.JSON;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DU_DataExtraction" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:i="clr-namespace:IntelligentDocumentProcessing;assembly=IntelligentDocumentProcessing" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_HashCode" Type="OutArgument(x:String)" />
-    <x:Property Name="out_JSONstring" Type="OutArgument(x:String)" />
+    <x:Property Name="out_JObject" Type="OutArgument(njl:JObject)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_FullPath" Type="InArgument(x:String)" />
   </x:Members>
@@ -177,7 +177,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1118,10672" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1118,10549" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JObject" Name="Final_JSON" />
       <Variable x:TypeArguments="x:String" Name="HashCode" />
@@ -596,37 +596,31 @@
         <InvokeMethod.TargetObject>
           <InArgument x:TypeArguments="njl:JObject">[Final_JSON]</InArgument>
         </InvokeMethod.TargetObject>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String">lines</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="njl:JArray">
-          <VisualBasicValue x:TypeArguments="njl:JArray" ExpressionText="Document_LineItems" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String">lines</InArgument>
+        <InArgument x:TypeArguments="njl:JArray">[Document_LineItems]</InArgument>
       </InvokeMethod>
       <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="416,169" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Add">
         <InvokeMethod.TargetObject>
           <InArgument x:TypeArguments="njl:JObject">[Final_JSON]</InArgument>
         </InvokeMethod.TargetObject>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String">processing_metadata</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="njl:JToken">
-          <VisualBasicValue x:TypeArguments="njl:JToken" ExpressionText="OCR_JSON(&quot;processing_metadata&quot;)" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String">processing_metadata</InArgument>
+        <InArgument x:TypeArguments="njl:JToken">[OCR_JSON("processing_metadata")]</InArgument>
       </InvokeMethod>
       <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="416,160" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Add">
         <InvokeMethod.TargetObject>
           <InArgument x:TypeArguments="njl:JObject">[Document_Header]</InArgument>
         </InvokeMethod.TargetObject>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String">classification</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="njl:JToken">
-          <VisualBasicValue x:TypeArguments="njl:JToken" ExpressionText="Document_Classification" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String">classification</InArgument>
+        <InArgument x:TypeArguments="njl:JToken">[Document_Classification]</InArgument>
       </InvokeMethod>
     </Sequence>
-    <uwaj:SerializeJson Settings="{x:Null}" DisplayName="Serialize JSON" sap:VirtualizedContainerService.HintSize="548,123" sap2010:WorkflowViewState.IdRef="SerializeJson_1" InputObject="[Final_JSON]" Result="[out_JSONstring]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="548,166" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Trace" Message="[&quot;Extracted data: &quot; + out_JSONstring]" />
+    <Assign sap:VirtualizedContainerService.HintSize="548,166" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JObject">[out_JObject]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JObject">[Final_JSON]</InArgument>
+      </Assign.Value>
+    </Assign>
   </Sequence>
 </Activity>
