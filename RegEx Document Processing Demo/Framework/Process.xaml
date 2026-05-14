@@ -144,7 +144,7 @@
       <AssemblyReference>System.Collections.Specialized</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1118,3018" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1539,3644" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FileExtension" />
       <Variable x:TypeArguments="x:String" Name="FileName" />
@@ -164,7 +164,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,211" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="488,211" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -200,7 +200,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Processing file: '{0}'.&quot;, FullPath)]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Processing file: '{0}'.&quot;, FullPath)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -208,9 +208,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Left(FileExtension,4)]" sap:VirtualizedContainerService.HintSize="478,1031" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Left(FileExtension,4)]" sap:VirtualizedContainerService.HintSize="488,1703" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
-        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="486,90" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -224,14 +224,14 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence x:Key=".pdf" DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,458" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence x:Key=".pdf" DisplayName="Case - .pdf" sap:VirtualizedContainerService.HintSize="486,458" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[FullPath]" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[PageCount]" />
-        <ui:ReadPDFText DisplayName="Read PDF Text" FileName="[FullPath]" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" PreserveFormatting="False" Range="All" Text="[InputText]">
+        <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[FullPath]" sap:VirtualizedContainerService.HintSize="452,115" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[PageCount]" />
+        <ui:ReadPDFText DisplayName="Read PDF Text" FileName="[FullPath]" sap:VirtualizedContainerService.HintSize="452,115" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" PreserveFormatting="False" Range="All" Text="[InputText]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -239,7 +239,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ReadPDFText>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="RegEx" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Data_Extraction\Regular Expressions.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="RegEx" sap:VirtualizedContainerService.HintSize="452,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Data_Extraction\Regular Expressions.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             <OutArgument x:TypeArguments="njl:JObject" x:Key="out_JObject">[ExtractedData]</OutArgument>
@@ -247,13 +247,51 @@
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key=".tif" DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,228" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence x:Key=".tif" DisplayName="Case - .tif" sap:VirtualizedContainerService.HintSize="486,964" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="ErrorMessage" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="IDP" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Data_Extraction\Intelligent Document Processing.xaml">
+        <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;&#x9;Using img = System.Drawing.Image.FromFile(in_FullPath)&#xA;&#x9;    out_PageCount = img.GetFrameCount(System.Drawing.Imaging.FrameDimension.Page)&#xA;&#x9;End Using&#xA;Catch ex As Exception&#xA;&#x9;out_ErrorMessage = ex.Message&#xA;End Try" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="452,197" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+          <ui:InvokeCode.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_FullPath">[FullPath]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_ErrorMessage">[ErrorMessage]</OutArgument>
+            <OutArgument x:TypeArguments="x:Int32" x:Key="out_PageCount">[PageCount]</OutArgument>
+          </ui:InvokeCode.Arguments>
+        </ui:InvokeCode>
+        <If Condition="[String.IsNullOrEmpty(ErrorMessage)]" sap:VirtualizedContainerService.HintSize="452,539" sap2010:WorkflowViewState.IdRef="If_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Document page count: &quot; + PageCount.ToString]" />
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Throw Exception="[New System.Exception(&quot;Failed to get document page count. Reason: &quot; + ErrorMessage)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            </Sequence>
+          </If.Else>
+        </If>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="IDP" sap:VirtualizedContainerService.HintSize="452,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Data_Extraction\Intelligent Document Processing.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <OutArgument x:TypeArguments="x:String" x:Key="out_HashCode">[HashCode]</OutArgument>
             <OutArgument x:TypeArguments="njl:JObject" x:Key="out_JObject">[ExtractedData]</OutArgument>
@@ -263,7 +301,7 @@
         </ui:InvokeWorkflowFile>
       </Sequence>
     </Switch>
-    <Sequence DisplayName="Add document metadata" sap:VirtualizedContainerService.HintSize="478,601" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence DisplayName="Add document metadata" sap:VirtualizedContainerService.HintSize="488,601" sap2010:WorkflowViewState.IdRef="Sequence_9">
       <Sequence.Variables>
         <Variable x:TypeArguments="njl:JObject" Name="DocumentMetaDataJObject" />
       </Sequence.Variables>
@@ -285,22 +323,18 @@
         <InvokeMethod.TargetObject>
           <InArgument x:TypeArguments="njl:JObject">[ExtractedData]</InArgument>
         </InvokeMethod.TargetObject>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String">document_metadata</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="njl:JObject">
-          <VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="DocumentMetaDataJObject" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String">document_metadata</InArgument>
+        <InArgument x:TypeArguments="njl:JObject">[DocumentMetaDataJObject]</InArgument>
       </InvokeMethod>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoice_Validation - Invoke Workflow File (Data_Validation\Invoice_Validation.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Data_Validation\Invoice_Validation.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoice_Validation - Invoke Workflow File (Data_Validation\Invoice_Validation.xaml)" sap:VirtualizedContainerService.HintSize="488,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Data_Validation\Invoice_Validation.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_FileName">[FileName]</InArgument>
         <InOutArgument x:TypeArguments="njl:JObject" x:Key="io_JObject">[ExtractedData]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Sequence DisplayName="Save the extracted data" sap:VirtualizedContainerService.HintSize="478,723" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence DisplayName="Save the extracted data" sap:VirtualizedContainerService.HintSize="488,723" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>

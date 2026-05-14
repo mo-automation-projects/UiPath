@@ -177,7 +177,12 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1118,10549" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1118,10348" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JObject" Name="Final_JSON" />
       <Variable x:TypeArguments="x:String" Name="HashCode" />
@@ -205,16 +210,33 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="548,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_2" in_IsPath="True" in_Text="[in_FullPath]" out_HashCode="[HashCode]">
+    <Sequence DisplayName="Document hash code" sap:VirtualizedContainerService.HintSize="548,57" sap2010:WorkflowViewState.IdRef="Sequence_58">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </i:Generate_Hash_Code>
+      <i:Generate_Hash_Code DisplayName="Generate Hash Code" sap:VirtualizedContainerService.HintSize="416,227" sap2010:WorkflowViewState.IdRef="Generate_Hash_Code_2" in_IsPath="True" in_Text="[in_FullPath]" out_HashCode="[HashCode]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </i:Generate_Hash_Code>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Trace" Message="[&quot;Document hash code: &quot; + HashCode]" />
+      <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_HashCode]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[HashCode]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
     <i:Check_Cache DisplayName="Check Cache" sap:VirtualizedContainerService.HintSize="548,279" sap2010:WorkflowViewState.IdRef="Check_Cache_3" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_HashCode="[HashCode]" in_Suffixes="[{&quot;Classification&quot;,&quot;Header&quot;,&quot;LineItems&quot;,&quot;OCR&quot;}]" out_FilesFound="[FilesFound]" />
-    <If Condition="[FilesFound.Contains(&quot;OCR&quot;)]" sap:VirtualizedContainerService.HintSize="548,2386" sap2010:WorkflowViewState.IdRef="If_8">
+    <If Condition="[FilesFound.Contains(&quot;OCR&quot;)]" sap:VirtualizedContainerService.HintSize="548,2355" sap2010:WorkflowViewState.IdRef="If_8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -236,13 +258,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="546,1898" sap2010:WorkflowViewState.IdRef="Sequence_51">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="546,1867" sap2010:WorkflowViewState.IdRef="Sequence_51">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Digitize document" sap:VirtualizedContainerService.HintSize="512,1838" sap2010:WorkflowViewState.IdRef="Sequence_20">
+          <Sequence DisplayName="Digitize document" sap:VirtualizedContainerService.HintSize="512,1807" sap2010:WorkflowViewState.IdRef="Sequence_20">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -297,7 +319,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,211" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
@@ -306,14 +328,6 @@
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
                       <InArgument x:TypeArguments="x:String" xml:space="preserve">["{""processed_at"": """ + Now.ToString("yyyy-MM-ddTHH:mm:ssZ") + """,  ""ocr_engine"": """ + in_Config("OCRengine").ToString + """,  ""llm_model"": """ + in_Config("GeminiModel").ToString + """,  ""pipeline_version"": """ + in_Config("PipelineVersion").ToString + """}"]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[out_HashCode]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[HashCode]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
@@ -326,6 +340,11 @@
                   </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
             <i:Update_Cache DisplayName="Update Cache" sap:VirtualizedContainerService.HintSize="478,331" sap2010:WorkflowViewState.IdRef="Update_Cache_10" in_CacheFolder="[in_Config(&quot;CacheFolder&quot;).ToString]" in_FileName="[HashCode + &quot;_OCR.txt&quot;]" in_Overwrite="True" in_Text="[OCR_String]" out_FilePath="[FilePath]" />
             <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="478,165" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_6" JsonObject="[OCR_JSON]" JsonString="[OCR_String]" />
