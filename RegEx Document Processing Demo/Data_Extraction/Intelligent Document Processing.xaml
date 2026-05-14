@@ -182,7 +182,7 @@
       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1118,10348" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DU_DataExtraction" sap:VirtualizedContainerService.HintSize="1575,10348" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JObject" Name="Final_JSON" />
       <Variable x:TypeArguments="x:String" Name="HashCode" />
@@ -524,7 +524,7 @@
                       <OutArgument x:TypeArguments="x:String">[APIcall_Body]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract the following data from the document: invoice number, date, vendor name, total amount, currency, order ID,  From the document. Return ONLY JSON with fields: number, date, vendor, amount, currency, order. The values of the fields should be in text format. The date format should be yyyy-MM-dd. Document text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["{ ""contents"": [{ ""parts"": [{ ""text"": ""Extract the following data from the document: invoice number, date, vendor name, total amount, currency, discount, shipping cost, order ID. Return ONLY JSON with fields: number, date, vendor, amount, currency, discount, shipping, order. The values of the fields should be in text format. The date format should be yyyy-MM-dd. Document text: " &amp; APIcall_SafeBodyPart &amp; """}]}]}"]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
