@@ -1,5 +1,5 @@
 {
-  "name": "Document Processing Demo",
+  "name": "Document Processing",
   "projectId": "820e8fc5-bb78-418a-92ef-d61bbc6c81e5",
   "description": "Robotic Enterprise Framework document processing demo showcasing \r\n1) the limitations of RegEx based data extraction\r\n2) usage of AI in a document processing workflow",
   "main": "Main.xaml",
